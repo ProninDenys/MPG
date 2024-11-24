@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuel Consumption Converter</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298); /* New gradient background */
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid #00d8ff;
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 20px #00d8ff;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        .container h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-family: 'Star Jedi', sans-serif;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1rem;
+            display: block; /* Ensures label aligns properly */
+        }
+
+        input,
+        select {
+            width: 100%; /* Ensures both elements are the same width */
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #00d8ff;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            appearance: none; /* Uniform arrow styles */
+        }
+
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%23ffffff' viewBox='0 0 8 8'%3E%3Cpath d='M0 0l4 4 4-4H0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 10px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #00d8ff;
+            color: black;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #008cba;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            background: #00d8ff;
+            color: black;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px #00d8ff;
+            }
+            to {
+                box-shadow: 0 0 20px #00d8ff;
+            }
+        }
+
+        @font-face {
+            font-family: 'Star Jedi';
+            src: url('https://fonts.cdnfonts.com/s/38073/StarJedi.ttf') format('truetype');
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fuel Converter</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="value">Enter Value:</label>
+                <input type="number" step="any" id="value" name="value" placeholder="Enter MPG or Litres/100 km" required>
+            </div>
+            <div class="form-group">
+                <label for="conversion_type">Conversion Type:</label>
+                <select id="conversion_type" name="conversion_type" required>
+                    <option value="mpg_to_litres">MPG to Litres/100 km</option>
+                    <option value="litres_to_mpg">Litres/100 km to MPG</option>
+                </select>
+            </div>
+            <button type="submit">Convert</button>
+        </form>
+        {% if result %}
+        <div class="result">Result: {{ result }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
