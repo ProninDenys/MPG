@@ -138,23 +138,20 @@
 
     <div class="container">
         <h1>MPG-Calculator</h1>
-        <form method="POST">
+        <form>
             <div class="form-group">
                 <label for="value">Enter Value:</label>
-                <input type="number" step="any" id="enter-value" name="value" placeholder="Enter MPG or Litres/100 km" required>
+                <input type="number" step="any" id="enter-value" placeholder="Enter MPG or Litres/100 km" required>
             </div>
             <div class="form-group">
                 <label for="conversion_type">Conversion Type:</label>
-                <select id="conversion-type" name="conversion_type" required>
+                <select id="conversion-type" required>
                     <option value="mpg_to_litres">MPG to Litres/100 km</option>
                     <option value="litres_to_mpg">Litres/100 km to MPG</option>
                 </select>
             </div>
-            <button type="submit">Convert</button>
+            <button type="button">Convert</button>
         </form>
-        {% if result %}
-        <div class="result">Result: {{ result }}</div>
-        {% endif %}
     </div>
 </body>
 </html>
